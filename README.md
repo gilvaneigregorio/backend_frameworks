@@ -12,9 +12,13 @@
 8. Implement Models DAO
 9. Implement Schemas DTO
 10. Replace the CRUD to use DAO and DTO
-11. Add processed fields to a DTO
-12. Add migrations
-13. Add docker
-14. Add scripts to run project commands in an easier way(makefile)
-15. Authentication and Authorization
-16. JWT Token
+11. Add computed fields to a DTO
+12. One to One relationship
+13. One to Many relationship
+14. Many to Many relationship
+15. Tests
+16. Add migrations
+17. Add docker
+18. Add scripts to run project commands in an easier way(makefile)
+19. Authentication and Authorization
+20. JWT Token
