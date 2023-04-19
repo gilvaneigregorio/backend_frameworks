@@ -18,7 +18,7 @@
 14. Many to Many relationship
 15. Tests
 16. Add migrations
-17. Add docker
-18. Add scripts to run project commands in an easier way(makefile)
-19. Authentication and Authorization
-20. JWT Token
+17. Authentication and Authorization
+18. JWT Token
+19. Add docker
+20. Add scripts to run project commands in an easier way(makefile)
