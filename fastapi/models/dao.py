@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, ForeignKey, Integer, String
 
 from utils.databases import Base
 
@@ -9,9 +9,10 @@ class Category(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
-    description = Column(String)
+    # description = Column(String)
     products = sqlalchemy.orm.relationship(
-        "products", back_populates="category", lazy="subquery")
+        "products", back_populates="category", lazy="subquery"
+    )
 
 
 class Product(Base):
@@ -21,4 +22,5 @@ class Product(Base):
     name = Column(String, unique=True, index=True)
     category_id = Column(ForeignKey("categories.id"), nullable=False)
     category = sqlalchemy.orm.relationship(
-        "categories", back_populates="products", lazy="joined")
+        "categories", back_populates="products", lazy="joined"
+    )

@@ -1,0 +1,39 @@
+version: '3.9'
+
+networks:
+  bridge-network:
+    driver:
+      bridge
+
+services:
+  fastapi-db:
+      image: postgres:13
+      ports:
+       - "5433:5432"
+      volumes:
+        - postgres_data:/var/lib/postgresql/data/
+      env_file:
+          - config/local.env
+      networks:
+        - bridge-network
+
+  fastapi-app:
+      build: 
+          dockerfile: dockerfile
+          context: ./
+      command: bash -c "uvicorn main:app --host 0.0.0.0 --port 8080 --reload"
+      ports:
+        - "8080:8080"
+      environment:
+        - APP_CONFIG_FILE=local
+      volumes:
+        - ./:/code
+      stdin_open: true
+      tty: true
+      depends_on:
+        - fastapi-db
+      networks:
+        - bridge-network
+
+volumes:
+  postgres_data:

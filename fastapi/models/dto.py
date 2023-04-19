@@ -1,5 +1,5 @@
 import typing
-from pydantic import BaseModel
+
 from pydantic import BaseModel, validator
 
 
@@ -21,10 +21,10 @@ class ProductBase(BaseModel):
 
 
 class Product(ProductBase):
-    category: typing.Optional['CategoryBase']
+    category: typing.Optional["CategoryBase"]
     computed_field: typing.Optional[str]
 
-    @validator('computed_field', pre=True, always=True)
+    @validator("computed_field", pre=True, always=True)
     def make_computed_field(cls, v: str, values: dict):
         return f'{values["name"]}_{values["id"]}'
 
